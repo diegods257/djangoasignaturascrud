@@ -1,0 +1,81 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+{{error}}
+    <div class="container-fluid my-4">
+      <div class="row ">
+        <div class="col-6">
+          <div class="p-3 border bg-light">  
+            <form action="/generar_matricula/" method="POST" class="row g-3">{% csrf_token %}
+              <div class="col-md-6">
+                <label class="form-label">Programa</label>
+                <input type="text" class="form-control" name="programa">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Materia a matricular</label>
+                <input type="text" class="form-control" name="materia">
+              </div>
+              <div class="col-6">
+                <label class="form-label">Creditos</label>
+                <input type="number" class="form-control" name="creditos">
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary">Matricular</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="p-3 border bg-light">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">Programa</th>
+                  <th scope="col">Materia</th>
+                  <th scope="col">Creditos</th>
+                  <th scope="col">Fecha Matricula</th>
+                  <th scope="col">Opciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for registros in registros %}
+                <tr>
+                  <td>{{registros.programa}}</td>
+                  <td>{{registros.materia}}</td>
+                  <td>{{registros.creditos}}</td>
+                  <td>{{registros.fechamatricula}}</td>
+                  <td>
+                    <a href="/editar/{{registros.id}}" class="btn btn-outline-success">editar</a>
+                   
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmación</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            ¿Esta seguro que desea eliminar esta matricula?
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <a href="/borrar/{{registros.id}}"type="button" class="btn btn-outline-danger">Eliminar</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>                   
+                    <button a href="/borrar/{{registros.id}}" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      Eliminar
+                    </button>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+{% endblock %}

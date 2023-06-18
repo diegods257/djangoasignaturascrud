@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="row justify-content-center text-center col m-lg-5">
+          <container class="form-signin w-25 ">
+              <form  action="/signin/" method="POST">
+                {% csrf_token %}
+                  <img class="mb-4" src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1073&q=80" alt="" width="180" >
+                  <h1 class="h-50 mb-3 text-white">Please sign in</h1>
+                  <div class="form-floating m-3">
+                      <input type="text" id="username" placeholder="Username" class="form-control text-center" name="username" required >
+                      <label for="username">Username</label>
+                  </div>
+                  <div class="form-floating m-3">
+                      <input type="password" id="password" placeholder="Password" class="form-control text-center" name="password" required >
+                      <label for="password">Password</label>
+                  </div>
+                  <input type="submit" class="w-75 btn btn-lg btn-primary" value="Sign in"/>
+                  <div id="errorMessage"><Strong>  {{error}}</Strong></div>
+              </form>
+          </main>
+  </div>
+
+{% endblock %}
+                     
+<!-- 
+{{form.as_p}} -->
+               

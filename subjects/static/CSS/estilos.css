@@ -1,0 +1,53 @@
+.bg1 {
+  background: #394f91;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #807660, #c73535, #1a2a6c);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #373ea3, #c73535, #203db4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.bg2 {
+  background: #43C6AC;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #191654, #43C6AC);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #191654, #43C6AC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+
+#carouselExampleIndicators .carousel-item img {
+  object-fit: cover;
+  object-position: center;
+  overflow: hidden;
+  height: 90vh;
+}
+
+#carouselExampleIndicators .carousel-item:before {
+  content: "";
+  background-image: 
+  linear-gradient(
+     to bottom,
+    transparent, rgba(115, 71, 136, 0.5)
+  );
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 90vw;
+  height: 90vh;
+}
+
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bottom {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

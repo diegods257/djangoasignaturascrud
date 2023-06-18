@@ -1,0 +1,56 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+<div class="container my-2">
+
+  {% if user.is_authenticated %}
+
+  <h1>Welcome <Strong>{{user}}!</Strong></h1>
+
+  {% else %}
+  <script src="{% static '/main.js' %}" defer></script>
+ 
+  
+
+  {% endif %}
+
+  
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="container ">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img  src="{% static '/images/python.jpg' %}" class="d-block w-100" alt="Python" height="600">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static '/images/react.jpg' %}" class="d-block w-100" alt="React" height="600">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static '/images/java.jpg' %}" class="d-block w-100" alt="Java" height="600">
+      </div>
+      <div class="centered" style="font-size: xx-large; font-weight: 100;">Educar Es Nuestra Pasion</div>
+
+      {% if user.is_authenticated %}
+      {% else %}
+      <div class="bottom"> 
+        <a href="{% url 'matriculas' %}" type="button" class="btn btn-info btn-lg">Register</a>
+      </div>
+      {% endif %}
+
+    </div>
+  </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+{% endblock %}
