@@ -39,6 +39,10 @@
                 </tr>
               </thead>
               <tbody>
+
+                {% if user.is_authenticated %}
+         
+               
                 {% for registros in registros %}
                 <tr>
                   <td>{{registros.programa}}</td>
@@ -72,6 +76,7 @@
                 </tr>
                 {% endfor %}
               </tbody>
+              {% endif %}
             </table>
           </div>
         </div>
