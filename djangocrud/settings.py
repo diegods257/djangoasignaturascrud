@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'djangocrud.wsgi.application'
  """
 
 MEDIA_ROOT = os.path.join(BASE_DIR, '')
-MEDIA_URL = '/subjects/static/images'
+MEDIA_URL = '/subjects/static/images/'
 
 DATABASES = {
     'default': dj_database_url.config(
