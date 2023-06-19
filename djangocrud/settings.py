@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'RENDER' not in os.environ
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -89,11 +89,16 @@ WSGI_APPLICATION = 'djangocrud.wsgi.application'
 }
  """
 
+MEDIA_ROOT = os.path.join(BASE_DIR, '')
+MEDIA_URL = '/subjects/static/images'
+
 DATABASES = {
     'default': dj_database_url.config(
         default='postgresql://postgres:postgres@localhost:5432/mysite', conn_max_age=600
     )
 }
+db_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_env)
 
 
 # Password validation
@@ -135,14 +140,14 @@ LOGIN_URL = 'signin'
 
 
 # Following settings only make sense on production and may break development environments.
-if not DEBUG:
+
     # Tell Django to copy statics to the `staticfiles` directory
     # in your application directory on Render.
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
     # Turn on WhiteNoise storage backend that takes care of compressing static files
     # and creating unique names for each version so they can safely be cached forever.
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 #AUTH_USER_MODEL = 'subjects.User'
