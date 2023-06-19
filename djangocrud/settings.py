@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME: 
@@ -48,14 +48,13 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'djangocrud.urls'
@@ -131,7 +130,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 LOGIN_URL = 'signin'
 
 
@@ -139,7 +138,7 @@ LOGIN_URL = 'signin'
 if not DEBUG:
     # Tell Django to copy statics to the `staticfiles` directory
     # in your application directory on Render.
-    STATIC_ROOT = os.path.join(BASE_DIR, 'subjects/static')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 
     # Turn on WhiteNoise storage backend that takes care of compressing static files
     # and creating unique names for each version so they can safely be cached forever.
@@ -154,3 +153,4 @@ if not DEBUG:
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+STATICFILES_DIRS = [os.path.join(BASE_DIR,'subjects/static'),]
